@@ -20,6 +20,10 @@ class login extends StatefulWidget {
 }
 
 class _loginState extends State<login> {
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -34,6 +38,7 @@ class _loginState extends State<login> {
             SizedBox(
                   width: 200,
                   child: TextField(
+                    controller: _usernameController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Username',
@@ -45,6 +50,7 @@ class _loginState extends State<login> {
                   width: 200,
                   child: TextField(
                     obscureText: true,
+                    controller: _passwordController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Password',
@@ -54,7 +60,11 @@ class _loginState extends State<login> {
 
             ElevatedButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const home(title: 'Home Page')));
+                String username = _usernameController.text;
+                if(username.isEmpty) {
+                  username = 'User';
+                }
+                Navigator.push(context, MaterialPageRoute(builder: (context) => home(title: 'Hello $username')));
               },
               child: const Text('Login'),
             ),
