@@ -28,7 +28,30 @@ class _loginState extends State<login> {
       ),
       body: Center(
         child: Column(
+          spacing: 20,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            SizedBox(
+                  width: 200,
+                  child: TextField(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Username',
+                    ),
+                  ),
+                ),
+
+            SizedBox(
+                  width: 200,
+                  child: TextField(
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Password',
+                    ),
+                  ),
+                ),
+
             ElevatedButton(
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => const home(title: 'Home Page')));
