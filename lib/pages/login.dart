@@ -22,7 +22,7 @@ class login extends StatefulWidget {
 class _loginState extends State<login> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,9 +61,6 @@ class _loginState extends State<login> {
             ElevatedButton(
               onPressed: () {
                 String username = _usernameController.text;
-                if(username.isEmpty) {
-                  username = 'User';
-                }
                 Navigator.push(context, MaterialPageRoute(builder: (context) => home(title: 'Hello $username')));
               },
               child: const Text('Login'),
