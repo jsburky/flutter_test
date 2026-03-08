@@ -1,8 +1,10 @@
+import 'package:basic_flutter_test/functions/AuthService.dart';
 import 'package:flutter/material.dart';
 import 'home.dart';
 
+
 class login extends StatefulWidget {
-  const login({super.key, required this.title});
+  const login({super.key});
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -13,7 +15,7 @@ class login extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
-  final String title;
+
 
   @override
   State<login> createState() => _loginState();
@@ -28,7 +30,7 @@ class _loginState extends State<login> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: Text("Login Page"),
       ),
       body: Center(
         child: Column(
@@ -58,12 +60,24 @@ class _loginState extends State<login> {
                   ),
                 ),
 
-            ElevatedButton(
-              onPressed: () {
-                String username = _usernameController.text;
-                Navigator.push(context, MaterialPageRoute(builder: (context) => home(title: 'Hello $username')));
-              },
-              child: const Text('Login'),
+            Row(
+              spacing: 20,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    AuthService().signin(email: _usernameController.text, password: _passwordController.text, context: context);
+                  },
+                  child: const Text('Login'),
+                ),
+
+                ElevatedButton(
+                  onPressed: () async {
+                    AuthService().signup(email: _usernameController.text, password: _passwordController.text, context: context);
+                  },
+                  child: const Text('Sign Up'),
+                ),
+              ]
             ),
           ],
         ),

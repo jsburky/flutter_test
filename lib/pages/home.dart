@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'login.dart';
+import 'package:basic_flutter_test/functions/AuthService.dart';
 
 class home extends StatefulWidget {
   const home({super.key, required this.title});
@@ -66,7 +67,7 @@ class _homeState extends State<home> {
 
             ElevatedButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const login(title: 'Login Page')));
+                AuthService().signout(context: context);
               },
               child: const Text('Sign Out'),
             ),
