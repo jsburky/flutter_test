@@ -77,6 +77,13 @@ class _loginState extends State<login> {
                   },
                   child: const Text('Sign Up'),
                 ),
+
+                ElevatedButton(
+                  onPressed: () async {
+                    AuthService().signingoogle(context: context);
+                  },
+                  child: const Text('Sign In With Google'),
+                ),
               ]
             ),
           ],

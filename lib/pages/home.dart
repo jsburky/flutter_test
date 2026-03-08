@@ -15,14 +15,14 @@ class home extends StatefulWidget {
   // always marked "final".
 
   final String title;
-
+  
   @override
   State<home> createState() => _homeState();
 }
 
 class _homeState extends State<home> {
   int _counter = 0;
-
+  final TextEditingController _updatePassword = TextEditingController();
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -71,7 +71,28 @@ class _homeState extends State<home> {
               },
               child: const Text('Sign Out'),
             ),
+
+             SizedBox(
+                  width: 200,
+                  child: TextField(
+                    controller: _updatePassword,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Update Password',
+                    ),
+                  ),
+                ),
+
+            ElevatedButton(
+              onPressed: () {
+                AuthService().updatePassword(context: context, newPassword: _updatePassword.text);
+              },
+              child: const Text('Reset Password'),
+            ),
+
           ],
+
+          
         ),
       ),
       floatingActionButton: FloatingActionButton(
